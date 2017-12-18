@@ -1,0 +1,14 @@
+
+# dirs to ignore
+results/*
+.snakemake*
+data/*
+
+# image files / pdf files
+*.png
+*.svg
+*.pdf
+*.html
+
+# misc
+*.DS_Store
