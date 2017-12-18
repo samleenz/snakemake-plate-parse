@@ -42,6 +42,8 @@ To test the pipeline once the config file is edited use
 
 ```
 snakemake --dag --forceall | dot -Tpng > dag.png
+#or
+snakemake -npr
 ```
 
 To execute:
