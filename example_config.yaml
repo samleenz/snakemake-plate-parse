@@ -1,0 +1,14 @@
+# These are the duplicate plates to be compared, there is a 
+# triple-underscore '___' between the two plate names and
+# this is important for how the R script saves the name of
+# the output file and just generally for the snakemake process.
+# pairs:
+#     A: SCW0137251_084229_003___SCW0137252_084229_002
+#     B: SCW0137253_084229_001___SCW0137254_084229_004
+
+
+pairs:
+    A: SCW0137251_084229_003___SCW0137252_084229_002
+    B: SCW0137253_084229_001___SCW0137254_084229_004
+
+
