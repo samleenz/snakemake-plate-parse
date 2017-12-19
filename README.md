@@ -12,6 +12,7 @@ Initial parsing of Envision PlateReader files for Aidan.
 * `results/deltas` has the delta files for each plate in `/data`
 * `results/z-score` has ranked z-score lists for each plate and a plot of the z-score distribution for each plate
 * `results/paired-hits` are the lists of plate coordinates where `z-score < -2` for both duplicate plates
+* `results/summary.txt` is the summary file for the pipeline. It lists each pair and the number of "hits" in descending order.
 
 ### Deltas
 
