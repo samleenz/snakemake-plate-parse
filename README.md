@@ -3,15 +3,17 @@
 ## Author: Sam Lee, `samleenz@me.com`
 ## Date: 2017-12-05
 
-Initial parsing of Envision PlateReader files for Aidan.
+Yeast screen initial analysis pipeline. From  a set of paired 384 well plates find the wells that exhibit the greatest growth defects across plate pairs for further analysis and potential follow-up.
+
+The code was written with a certain setup in mind from an Envision screen so while it is generalisable there will likely be some changes required e.g. for exclusion of control wells and ensuring mapping of well numbers to alpha-numeric coordinates is correct.
 
 ### Directory strucutre
 
 * `code/` has the scripts for processing
 * `data/` contains raw data files
 * `results/deltas` has the delta files for each plate in `/data`
-* `results/z-score` has ranked z-score lists for each plate and a plot of the z-score distribution for each plate
-* `results/paired-hits` are the lists of plate coordinates where `z-score < -2` for both duplicate plates
+* `results/z-score` has ranked z-score lists for each plate and a plot of the z-score distribution for each plate in `z-score/plots`
+* `results/paired-hits` are the lists of plate coordinates where `z-score < -2` for the duplicate plates
 * `results/summary.txt` is the summary file for the pipeline. It lists each pair and the number of "hits" in descending order.
 
 ### Deltas
