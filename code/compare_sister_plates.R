@@ -64,19 +64,6 @@ plate2Neg <- plate2Raw %>%
 combineNeg <- intersect(plate1Neg, plate2Neg)
 
 
-# filter for pos hits -----------------------------------------------------
-
-plate1Pos <- plate1Raw %>% 
-  filter(zScore > 2) %>% 
-  pull(plateCoordinate)
-
-plate2Pos <- plate2Raw %>% 
-  filter(zScore > 2) %>% 
-  pull(plateCoordinate)
-
-combinePos <- intersect(plate1Pos, plate2Pos)
-
-
 # convert to plate coordinates --------------------------------------------
 
 # ask sven how this works
@@ -84,7 +71,7 @@ combinePos <- intersect(plate1Pos, plate2Pos)
 # but letN is row number of the well in 384 well format
 # then it is used to get the column number
 # NOTE: won't work if col 24 is a possible answer ¯\_(ツ)_/¯ 
-coordNeg <- vector()
+coordNeg <- vector(mode = "logical")
 for (x in combineNeg){
   letN <- (floor(x / 24) + 1)
   num <- x - ((letN - 1) * 24)
@@ -94,8 +81,14 @@ for (x in combineNeg){
 
 # save the hits -----------------------------------------------------------
 
+# write coordNeg to file if it contains values
+# otherwise just creat blank file
+# This is to ensure that the summarise rule counts blank files as "0" not "1"
 # neg hits
-write(coordNeg, file = file.path(topDir, "results", "paired-hits", paste0(outName, "_paired_neg_hits.txt")), ncolumns = 1)
+if (! (typeof(coordNeg) == "logical")) {
+  write(coordNeg, file = file.path(topDir, "results", "paired-hits", paste0(outName, "_paired_neg_hits.txt")), ncolumns = 1)
+} else {
+   file.create(file.path(topDir, "results", "paired-hits", paste0(outName, "_paired_neg_hits.txt")))
+}
 
-# pos hits
-# write(combinePos, file = file.path(topDir, "results", "paired-hits", paste0(outName, "_paired_pos_hits.txt")), ncolumns = 1)
+
