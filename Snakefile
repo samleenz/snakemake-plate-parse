@@ -60,7 +60,7 @@ rule make_delta:
         "data/{sample}.txt"
     output:
         "results/deltas/{sample}_delta.txt"
-    conda:
+    # conda:
         # "envs/environment.yaml"
     shell:
         """
@@ -73,7 +73,7 @@ rule z_score:
     output:
         a="results/z-score/{sample}_zscore.txt",
         b="results/z-score/plots/{sample}_zscore.png"
-    conda:
+    # conda:
         # "envs/environment.yaml"
     shell:
         """
@@ -87,8 +87,8 @@ rule match_plates:
         pair2="results/z-score/{pair2}_zscore.txt"
     output:
         "results/paired-hits/{pair1}___{pair2}_paired_pos_hits.txt"
-    conda:
-        "envs/environment.yaml"
+    # conda:
+        # "envs/environment.yaml"
     shell:
         """
         Rscript code/compare_sister_plates.R $(pwd) {input.pair1} {input.pair2}
