@@ -45,7 +45,7 @@ rule summarise:
     input:
         # main=expand("results/z-score/{sample}_zscore.txt", sample=config["samples"])
         # main=expand("results/paired-hits/{pair}_paired_neg_hits.txt", pair=config["pairs"].values())
-        main="results/paired-hits/{pair}_paired_neg_hits.txt"
+        main="results/paired-hits/{pair}_paired_pos_hits.txt"
     output:
         temp("results/{pair}_summary.txt")
     shell:
@@ -82,7 +82,7 @@ rule match_plates:
         pair1="results/z-score/{pair1}_zscore.txt",
         pair2="results/z-score/{pair2}_zscore.txt"
     output:
-        "results/paired-hits/{pair1}___{pair2}_paired_neg_hits.txt"
+        "results/paired-hits/{pair1}___{pair2}_paired_pos_hits.txt"
     shell:
         """
         Rscript code/compare_sister_plates.R $(pwd) {input.pair1} {input.pair2}
